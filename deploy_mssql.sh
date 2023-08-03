@@ -15,8 +15,7 @@ fi
 if [[ $command = "deploy" ]]
 then
   oc new-project mssql
-#  oc adm policy add-scc-to-user anyuid system:serviceaccount:mssql:default
-  oc create secret generic mssql --from-literal=SA_PASSWORD="Sql2017fordemo"
+  oc create secret generic mssql --from-literal=SA_PASSWORD="Sql2017fordemo" # notsecret
   oc apply -f ./storage.yaml
   oc apply -f ./deployment.yaml
 elif [[ $command = "undeploy" ]]
