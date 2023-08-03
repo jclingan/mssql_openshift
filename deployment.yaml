@@ -17,7 +17,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
       - name: mssql
-        image: mcr.microsoft.com/mssql/server:2017-latest
+        image: mcr.microsoft.com/mssql/rhel/server:2022-latest
         ports:
         - containerPort: 1433
         env:
@@ -32,7 +32,7 @@ spec:
               key: SA_PASSWORD
         volumeMounts:
         - name: mssqldb
-          mountPath: /var/opt/mssql
+          mountPath: /mssql/data
       volumes:
       - name: mssqldb
         persistentVolumeClaim:
@@ -62,4 +62,3 @@ spec:
     - protocol: TCP
       port: 1433
       targetPort: 1433
-# mcr.microsoft.com/mssql/rhel/server:2022-latest
